@@ -7,7 +7,7 @@ void main() {
   return runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
         appBar: AppBar(
           title: Text('Dicee'),
           backgroundColor: Colors.red,
@@ -27,11 +27,12 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   int leftdicenumber = 1;
-  int rightdicenumber = 1;
+  int rightdicenumber = 2;
 
   void changedice() {
     setState(() {
       leftdicenumber = Random().nextInt(5) + 1;
+      rightdicenumber = Random().nextInt(5) + 1;
     });
   }
 
@@ -52,9 +53,11 @@ class _DicePageState extends State<DicePage> {
           ),
           Expanded(
             child: OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                changedice();
+              },
               child: Image.asset(
-                'images/dice2.png',
+                'images/dice$rightdicenumber.png',
               ),
             ),
           ),
